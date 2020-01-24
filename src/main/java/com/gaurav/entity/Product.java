@@ -4,10 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -28,5 +25,9 @@ public class Product {
     private LocalDate dateCreated;
     @UpdateTimestamp
     private LocalDate dateUpdated;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",nullable = false)
+    private ProductCategory productCategory;
 
 }
